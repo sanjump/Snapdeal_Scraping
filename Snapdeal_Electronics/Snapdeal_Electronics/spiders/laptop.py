@@ -3,17 +3,15 @@ from ..items import SnapdealElectronicsItem
 
 class SnapdealSpider(scrapy.Spider):
 
-    name = 'snaptablet'
+    name = 'snaplaptop'
 
 
-    start_urls=['https://www.snapdeal.com/products/mobiles-tablets?sort=plrty#bcrumbLabelId:175']
+    start_urls=['https://www.snapdeal.com/products/computers-laptops?sort=plrty']
 
     def parse(self, response):
 
 
         page = response.css("a.dp-widget-link::attr('href')").getall()
-
-
 
         for p in page[4:]:
 
@@ -63,7 +61,7 @@ class SnapdealSpider(scrapy.Spider):
         items['product_id'] = product_id
         items['stores'] = stores
         items['category'] = 'electronics'
-        items['subcategory'] = 'tablet'
+        items['subcategory'] = 'laptop'
         items['brand'] = product_name.split()[0]
         items['description'] = {}
 

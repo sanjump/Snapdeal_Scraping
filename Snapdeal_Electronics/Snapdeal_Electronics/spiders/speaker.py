@@ -64,6 +64,7 @@ class SnapdealSpider(scrapy.Spider):
         items['stores'] = stores
         items['category'] = 'electronics'
         items['subcategory'] = 'speakers'
+        items['brand'] = product_name.split()[0]
         items['description'] = {}
 
         for i in range(len(spec_title)):
